@@ -145,7 +145,8 @@ namespace ChallengeAS
                     }
                 }
             }
-            else
+            
+            if(provas.Count == 0 || provaNaoExiste)
             {
                 int num = 0;
                 Console.WriteLine("Prova ainda nao existe, vamos criar");

@@ -43,7 +43,7 @@ namespace ChallengeAS
                         addprova(provas,participantes);
                         break;
                     case 4:
-                        gestaoerros();
+                        gestaoerros(participantes,entidades);
                         break;
                 }
 
@@ -73,7 +73,7 @@ namespace ChallengeAS
                 foreach (entidade e in entidades)
                 {
                     
-                    Console.WriteLine("{0} - {1}, {2} ",count,e.nome,e.distrito);
+                    Console.WriteLine("{0} - {1}, {2}, {3} ",count,e.nome,e.distrito,e.tipoprova);
                     count++;
                 }
                 int ent = int.Parse(Console.ReadLine());
@@ -182,7 +182,7 @@ namespace ChallengeAS
             }
         }
 
-        static void gestaoerros()
+        static void gestaoerros(List<participante> participantes, List<entidade> entidades)
         {
            
 
@@ -199,10 +199,10 @@ namespace ChallengeAS
                 switch (opmenu)
                 {
                     case 1:
-                        removeparticipante();
+                        removeparticipante(participantes);
                         break;
                     case 2:
-                        removeentidade();
+                        removeentidade(entidades);
                         break;
                     case 3:
                         removeprova();
@@ -216,15 +216,45 @@ namespace ChallengeAS
 
 
 
-        static void removeparticipante()
+        static void removeparticipante(List<participante> participantes)
         {
+            bool partexit = false;
+            if (participantes.Count() != 0)
+            {
+                Console.WriteLine("Insira o Bi do participante para apagar");
+                int bi = int.Parse(Console.ReadLine());
+                foreach (participante p in participantes)
+                {
+                    if (bi == p.id)
+                    {
+                        participantes.Remove(p);
+                        partexit = true;
+                        break;
+                    }
+                }
+                if (partexit == false) Console.WriteLine("Nao existe participante com este bi!");
+            }
+            else Console.WriteLine("Nao existem participantes");
 
         }
 
 
-        static void removeentidade()
+        //complemto
+        static void removeentidade(List<entidade> entidades)
         {
+            if (entidades.Count() != 0)
+            {
+                int count = 1;
+                foreach (entidade e in entidades)
+                {
+                    Console.WriteLine("{0} - {1}, {2}", count, e.nome, e.distrito);
+                    count++;
+                }
+                int op = int.Parse(Console.ReadLine());
+                entidades.Remove(entidades[op - 1]);
 
+            }
+            else Console.WriteLine("Nao existem entidades");
         }
 
         static void removeprova()

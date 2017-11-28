@@ -179,7 +179,28 @@ namespace ChallengeAS
 
         static void gestaoerros()
         {
-            Console.WriteLine();
+           
+
+            int opmenu = 5;
+            do
+            {
+                Console.WriteLine("1 - Remover participante");
+                Console.WriteLine("2 - Remover Entidade");
+                Console.WriteLine("3 - Remover Inscricao na prova");
+                Console.WriteLine("0 - Voltar");
+
+                opmenu = int.Parse(Console.ReadLine());
+                Console.Clear();
+                switch (opmenu)
+                {
+                    case 1:
+                       
+                        break;
+                    
+                }
+
+
+            } while (opmenu != 0);
         }
     }
 }

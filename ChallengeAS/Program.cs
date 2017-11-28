@@ -125,14 +125,24 @@ namespace ChallengeAS
 
         static void addprova(List <prova> provas, List<participante> participantes)
         {
+            bool provaNaoExiste = false;
+
             if (provas.Count != 0)
             {
                 Console.WriteLine("Id da prova? (Ex: PROG_JAVA_3)");
                 string idprova = Console.ReadLine();
 
-                foreach ()
+                foreach (prova t in provas)
                 {
+                    if(t.idnome == idprova)
+                    {
 
+                    }
+                    else
+                    {
+
+                        provaNaoExiste = true;
+                    }
                 }
             }
             else

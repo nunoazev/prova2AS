@@ -197,13 +197,40 @@ namespace ChallengeAS
                 switch (opmenu)
                 {
                     case 1:
-                       
+                        removeparticipante();
                         break;
-                    
+                    case 2:
+                        removeentidade();
+                        break;
+                    case 3:
+                        removeprova();
+                        break;
+
                 }
 
 
             } while (opmenu != 0);
         }
+
+
+
+        static void removeparticipante()
+        {
+
+        }
+
+
+        static void removeentidade()
+        {
+
+        }
+
+        static void removeprova()
+        {
+
+        }
+
+
     }
+
 }

@@ -154,30 +154,30 @@ namespace ChallengeAS
                 string desc = Console.ReadLine();
 
                 prova novaProva = new prova(idprova, desc);
+            } 
+        }
 
+        static void addParticipanteToProva(List<participante> participantes)
+        {
+            do{
+                Console.WriteLine("Participantes a inserir:");
+                num = int.Parse(Console.ReadLine());
+            } while (num <= 0);
+
+            for (int i=0; i<num;i++) {
                 do
                 {
-                    Console.WriteLine("Participantes a inserir:");
-                    num = int.Parse(Console.ReadLine());
-                } while (num <= 0);
-
-                for (int i=0; i<num;i++) {
-                    do
+                    Console.WriteLine("Insira o bi do participante");
+                    int bi = int.Parse(Console.ReadLine());
+                    foreach(participante p in participantes)
                     {
-                        Console.WriteLine("Insira o bi do participante");
-                        int bi = int.Parse(Console.ReadLine());
-                        foreach(participante p in participantes)
+                        if (bi == p.id)
                         {
-                            if (bi == p.id)
-                            {
-                                novaProva.listap.Add(p, 0);
-                            }
+                            novaProva.listap.Add(p, 0);
                         }
-                    } while (true);
-                }
-
-            } 
-
+                    }
+                } while (true);
+            }
         }
 
         static void gestaoerros()

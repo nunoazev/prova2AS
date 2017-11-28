@@ -126,7 +126,7 @@ namespace ChallengeAS
         static void addprova(List <prova> provas, List<participante> participantes)
         {
             bool provaNaoExiste = false;
-            string idprova;
+            string idprova="";
 
             if (provas.Count != 0)
             {
@@ -173,7 +173,7 @@ namespace ChallengeAS
                                 novaProva.listap.Add(p, 0);
                             }
                         }
-                    } while ();
+                    } while (true);
                 }
 
             } 

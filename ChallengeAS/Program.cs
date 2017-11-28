@@ -150,7 +150,10 @@ namespace ChallengeAS
             {
                 int num = 0;
                 Console.WriteLine("Prova ainda nao existe, vamos criar");
-                Console.WriteLine("N");
+                Console.WriteLine("Descrição da prova?");
+                string desc = Console.ReadLine();
+
+                prova novaProva = new prova(idprova, desc);
 
                 do
                 {
@@ -167,7 +170,7 @@ namespace ChallengeAS
                         {
                             if (bi == p.id)
                             {
-
+                                novaProva.listap.Add(p, 0);
                             }
                         }
                     } while ();

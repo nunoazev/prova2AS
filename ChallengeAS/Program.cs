@@ -148,7 +148,6 @@ namespace ChallengeAS
             
             if(provas.Count == 0 || provaNaoExiste)
             {
-                int num = 0;
                 Console.WriteLine("Prova ainda nao existe, vamos criar");
                 Console.WriteLine("Descrição da prova?");
                 string desc = Console.ReadLine();
@@ -157,9 +156,12 @@ namespace ChallengeAS
             } 
         }
 
-        static void addParticipanteToProva(List<participante> participantes)
+        static void addParticipanteToProva(prova pro, List<participante> participantes)
         {
-            do{
+            int num = 0;
+
+            do
+            {
                 Console.WriteLine("Participantes a inserir:");
                 num = int.Parse(Console.ReadLine());
             } while (num <= 0);
@@ -173,7 +175,7 @@ namespace ChallengeAS
                     {
                         if (bi == p.id)
                         {
-                            novaProva.listap.Add(p, 0);
+                            pro.listap.Add(p, 0);
                         }
                     }
                 } while (true);

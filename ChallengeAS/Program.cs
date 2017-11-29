@@ -162,7 +162,7 @@ namespace ChallengeAS
         }
 
         //completo
-        static void addParticipanteToProva(prova pro, List<participante> participantes)
+        static void addParticipantesToProva(prova pro, List<participante> participantes)
         {
             int num = 0;
 

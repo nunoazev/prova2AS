@@ -10,6 +10,7 @@ namespace ChallengeAS
     {
         static void Main(string[] args)
         {
+
             List<prova> provas = new List<prova>();
             List<participante> participantes = new List<participante>();
             List<entidade> entidades = new List<entidade>();
@@ -26,6 +27,7 @@ namespace ChallengeAS
                 Console.WriteLine("2 - Adicionar nova Indentidade");
                 Console.WriteLine("3 - Adicionar nova prova");
                 Console.WriteLine("4 - Gestao de erros");
+                Console.WriteLine("5 - Adicionar Chefe De oficina");
 
                 Console.WriteLine("0 - Sair");
 
@@ -43,7 +45,10 @@ namespace ChallengeAS
                         addprova(provas,participantes);
                         break;
                     case 4:
-                        gestaoerros(participantes,entidades);
+                        gestaoerros(participantes,entidades,provas);
+                        break;
+                    case 5:
+                        addchefeoficina(chefe);
                         break;
                 }
 
@@ -51,13 +56,11 @@ namespace ChallengeAS
             } while (opmenu != 0);
 
 
-            //extra 
-            Console.WriteLine(participantes.Count);
-            Console.ReadKey();
         }
 
         //static garante que ja existe na primeira execucao do codigo. pesquisar!
 
+        //completo
         static void addparticipante(List<participante> participantes,List<entidade> entidades)
         {
             if (entidades.Count!=0)
@@ -89,6 +92,7 @@ namespace ChallengeAS
            
         }
 
+        //completo
         static void addentidade(List<entidade> entidades)
         {
            
@@ -123,6 +127,7 @@ namespace ChallengeAS
             
         }
 
+        //completo
         static void addprova(List <prova> provas, List<participante> participantes)
         {
             bool provaNaoExiste = false;
@@ -156,6 +161,7 @@ namespace ChallengeAS
             } 
         }
 
+        //completo
         static void addParticipanteToProva(prova pro, List<participante> participantes)
         {
             int num = 0;
@@ -182,7 +188,8 @@ namespace ChallengeAS
             }
         }
 
-        static void gestaoerros(List<participante> participantes, List<entidade> entidades)
+        //sub menu completo
+        static void gestaoerros(List<participante> participantes, List<entidade> entidades,List<prova> provas)
         {
            
 
@@ -205,7 +212,7 @@ namespace ChallengeAS
                         removeentidade(entidades);
                         break;
                     case 3:
-                        removeprova();
+                        removeprova(provas);
                         break;
 
                 }
@@ -215,7 +222,7 @@ namespace ChallengeAS
         }
 
 
-
+        //completo
         static void removeparticipante(List<participante> participantes)
         {
             bool partexit = false;
@@ -239,7 +246,7 @@ namespace ChallengeAS
         }
 
 
-        //complemto
+        //completo
         static void removeentidade(List<entidade> entidades)
         {
             if (entidades.Count() != 0)
@@ -257,9 +264,13 @@ namespace ChallengeAS
             else Console.WriteLine("Nao existem entidades");
         }
 
-        static void removeprova()
-        {
 
+        static void removeprova(List<prova> provas)
+        {
+            if (provas.Count() != 0)
+            {
+
+            } else Console.WriteLine("Nao existe provas para apagar");
         }
 
 

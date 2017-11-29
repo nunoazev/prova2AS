@@ -183,6 +183,7 @@ namespace ChallengeAS
             }
         }
 
+        //completo
         static void addParticipantesToProva(prova pro, List<participante> participantes)
         {
             int num = 0;

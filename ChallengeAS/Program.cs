@@ -315,6 +315,7 @@ namespace ChallengeAS
         //?
         static void addchefeoficina(List<chefeoficina> chefeoficinas)
         {
+            chefeoficina chefe = new chefeoficina();
 
         }
 

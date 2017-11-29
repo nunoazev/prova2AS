@@ -13,6 +13,8 @@ namespace ChallengeAS
         
         public Dictionary<participante, float> listap { get; set; }
 
+        chefeoficina co { get; set; }
+
 
         public prova(string idnome, string descricao)
         {

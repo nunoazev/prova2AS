@@ -211,7 +211,7 @@ namespace ChallengeAS
                             participanteExiste = true;
 
                             if (!pro.listap.ContainsKey(p))
-                                pro.listap.Add(p, 0);
+                                pro.insereParticipante(p);
                             else
                             {
                                 Console.WriteLine("Participante já está inscrito nesta prova!");
@@ -224,6 +224,69 @@ namespace ChallengeAS
                         Console.WriteLine("Participante não existe!");
                 } while (!participanteExiste);
             }
+        }
+
+        //completo
+        static void removeParticipanteDaProva(List<prova> provas, List<participante> participantes)
+        {
+            if (provas.Count != 0 || participantes.Count != 0)
+            {
+                int count = 1;
+                foreach (prova pro in provas)
+                {
+                    Console.WriteLine("[{0}] - {1}", count, pro.idnome);
+                    count++;
+                }
+
+                int op = int.Parse(Console.ReadLine());
+
+                if (provas.Contains(provas[op - 1]))
+                {
+                    count = 1;
+                    prova pro = provas[op - 1];
+
+                    if (pro.listap.Count != 0)
+                    {
+                        foreach (KeyValuePair<participante, float> par in pro.listap)
+                        {
+                            Console.WriteLine("[{0}] - {1}", count, par.Key.nome);
+                            count++;
+                        }
+
+                        int op2 = int.Parse(Console.ReadLine());
+
+                        count = 1;
+                        participante part = null;
+                        foreach (KeyValuePair<participante, float> par in pro.listap)
+                        {
+                            if (count == op2)
+                                part = par.Key;
+                            count++;
+                        }
+
+                        if (pro.listap.ContainsKey(part))
+                        {
+                            pro.listap.Remove(part);
+                            Console.WriteLine("Participante {0} removido da prova {1}!", part.nome, provas[op - 1].idnome);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Participante {0} não existe!", op2);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Não existem participantes na prova!");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Prova {0} não existe!", op);
+                }
+            }
+            else
+                Console.WriteLine("Não existem provas e/ou participantes!");
+
         }
 
         //sub menu completo
@@ -250,7 +313,7 @@ namespace ChallengeAS
                         removeentidade(entidades);
                         break;
                     case 3:
-                        removeprova(provas);
+                        removeParticipanteDaProva(provas, participantes);
                         break;
 
                 }
@@ -300,15 +363,6 @@ namespace ChallengeAS
 
             }
             else Console.WriteLine("Nao existem entidades");
-        }
-
-        //?
-        static void removeprova(List<prova> provas)
-        {
-            if (provas.Count() != 0)
-            {
-
-            } else Console.WriteLine("Nao existe provas para apagar");
         }
 
 

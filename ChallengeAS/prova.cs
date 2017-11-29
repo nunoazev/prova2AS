@@ -44,7 +44,6 @@ namespace ChallengeAS
 
         public int insereParticipante(participante a)
         {
-
             //adicionar portecao para ver se adiciona 1/0
             this.listap.Add(a,0);
             return 1;

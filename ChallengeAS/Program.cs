@@ -48,7 +48,7 @@ namespace ChallengeAS
                         gestaoerros(participantes,entidades,provas);
                         break;
                     case 5:
-                        addchefeoficina(chefe);
+                        addchefeoficina(chefeoficinas);
                         break;
                 }
 
@@ -264,7 +264,7 @@ namespace ChallengeAS
             else Console.WriteLine("Nao existem entidades");
         }
 
-
+        //?
         static void removeprova(List<prova> provas)
         {
             if (provas.Count() != 0)
@@ -273,6 +273,12 @@ namespace ChallengeAS
             } else Console.WriteLine("Nao existe provas para apagar");
         }
 
+
+        //?
+        static void addchefeoficina(List<chefeoficina> chefeoficinas)
+        {
+
+        }
 
     }
 

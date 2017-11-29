@@ -125,38 +125,60 @@ namespace ChallengeAS
 
         static void addprova(List <prova> provas, List<participante> participantes)
         {
-            bool provaNaoExiste = false;
-            string idprova="";
-
-            if (provas.Count != 0)
+            if (participantes.Count != 0)
             {
-                Console.WriteLine("Id da prova? (Ex: PROG_JAVA_3)");
-                idprova = Console.ReadLine();
+                bool provaNaoExiste = false;
+                string idprova = "";
 
-                foreach (prova t in provas)
+                if (provas.Count != 0)
                 {
-                    if(t.idnome == idprova)
+                    Console.WriteLine("Id da prova? (Ex: PROG_JAVA_3)");
+                    idprova = Console.ReadLine();
+
+                    foreach (prova t in provas)
                     {
-                        
-                    }
-                    else
-                    {
-                        provaNaoExiste = true;
+                        if (t.idnome.CompareTo(idprova) == 0)
+                        {
+                            Console.WriteLine("Adicionar participantes à prova {0}:", t.idnome);
+                            addParticipantesToProva(t, participantes);
+                        }
+                        else
+                        {
+                            provaNaoExiste = true;
+                        }
                     }
                 }
-            }
-            
-            if(provas.Count == 0 || provaNaoExiste)
-            {
-                Console.WriteLine("Prova ainda nao existe, vamos criar");
-                Console.WriteLine("Descrição da prova?");
-                string desc = Console.ReadLine();
 
-                prova novaProva = new prova(idprova, desc);
-            } 
+                if (provas.Count == 0 || provaNaoExiste)
+                {
+                    if(provaNaoExiste)
+                        Console.WriteLine("Prova ainda nao existe, vamos criar!");
+                    else if(provas.Count == 0)
+                        Console.WriteLine("Aidna não existem provas, vamos criar a primeira!");
+
+                    if (provas.Count == 0)
+                    {
+                        Console.WriteLine("\nId da prova? (Ex: PROG_JAVA_3)");
+                        idprova = Console.ReadLine();
+                    }
+
+                    Console.WriteLine("Descrição da prova?");
+                    string desc = Console.ReadLine();
+
+                    prova novaProva = new prova(idprova, desc);
+                    provas.Add(novaProva);
+
+                    addParticipantesToProva(novaProva, participantes);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Não pode criar provas: Não existem participantes!");
+                Console.ReadKey();
+            }
         }
 
-        static void addParticipanteToProva(prova pro, List<participante> participantes)
+        static void addParticipantesToProva(prova pro, List<participante> participantes)
         {
             int num = 0;
 
@@ -164,9 +186,14 @@ namespace ChallengeAS
             {
                 Console.WriteLine("Participantes a inserir:");
                 num = int.Parse(Console.ReadLine());
-            } while (num <= 0);
 
-            for (int i=0; i<num;i++) {
+                if (num > participantes.Count)
+                    Console.WriteLine("Erro: Apenas existem {0} participantes!", participantes.Count);
+            } while (num <= 0 || num > participantes.Count);
+
+            for (int i=0; i<num;i++)
+            {
+                bool participanteExiste = false;
                 do
                 {
                     Console.WriteLine("Insira o bi do participante");
@@ -175,10 +202,21 @@ namespace ChallengeAS
                     {
                         if (bi == p.id)
                         {
-                            pro.listap.Add(p, 0);
+                            participanteExiste = true;
+
+                            if (!pro.listap.ContainsKey(p))
+                                pro.listap.Add(p, 0);
+                            else
+                            {
+                                Console.WriteLine("Participante já está inscrito nesta prova!");
+                                Console.ReadKey();
+                            }
+
                         }
                     }
-                } while (true);
+                    if (!participanteExiste)
+                        Console.WriteLine("Participante não existe!");
+                } while (!participanteExiste);
             }
         }
 

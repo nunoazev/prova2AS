@@ -12,9 +12,10 @@ namespace ChallengeAS
         public DateTime dataNascimento { get; set; }
         public string nome { get; set; }
 
-        public staff(int id, DateTime dn, string nome)
+        static int gerador = 0;
+        public staff( DateTime dn, string nome)
         {
-            this.idInterno = id;
+            this.idInterno = gerador++;
             this.dataNascimento = dn;
             this.nome = nome;
         }

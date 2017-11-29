@@ -12,9 +12,11 @@ namespace ChallengeAS
         public double dinheiro { get; set; }
         public DateTime dataInscri { get; set; }
         public prova p { get; set; }
-
-        public chefeoficina(int id, DateTime dn, string nome) : base(id, dn, nome)
-        {
+       
+        public chefeoficina(DateTime dn, string nome, double dinheiro,prova p) : base( dn, nome)
+        {            this.dinheiro = dinheiro;
+            this.dataInscri = DateTime.Now;
+            this.p = p;
         }
 
         public string calculaDataFimParticipacao(int numeroDeDias)

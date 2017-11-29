@@ -48,7 +48,7 @@ namespace ChallengeAS
                         gestaoerros(participantes,entidades,provas);
                         break;
                     case 5:
-                        addchefeoficina(chefeoficinas);
+                        addchefeoficina(chefeoficinas,provas);
                         break;
                 }
 
@@ -313,10 +313,49 @@ namespace ChallengeAS
 
 
         //?
-        static void addchefeoficina(List<chefeoficina> chefeoficinas)
+        static void addchefeoficina(List<chefeoficina> chefeoficinas, List<prova> provas)
         {
-            chefeoficina chefe = new chefeoficina();
+            if (provas.Count() != 0)
+            {
+                int count = 1;
+                bool flag = false;
+                int op;
+                Console.WriteLine("Insira o nome:");
+                string nome = Console.ReadLine();
+                Console.WriteLine("Insira a data de nascimento:");
+                DateTime dn = DateTime.Parse(Console.ReadLine());
+                Console.WriteLine("Insira o seu ordenado:");
+                double dinheiro = double.Parse(Console.ReadLine());
 
+
+
+                do
+                {
+                    Console.WriteLine("Insira a prova:");
+                    foreach (prova p in provas)
+                    {
+                        Console.WriteLine("{0} - {1}, {2}", count, p.idnome, p.descricao);
+                        break;
+                        count++;
+
+                    }
+                    //verificar
+                    op = int.Parse(Console.ReadLine());
+
+                    foreach (chefeoficina ch in chefeoficinas)
+                    {
+                        if (ch.p.idnome.CompareTo(provas[op - 1].idnome) == 0)
+                        {
+                            flag = true;
+                            Console.WriteLine("ja existe um chefe de oficina associado a esta prova");
+                            break;
+                        }
+                    }
+                } while (flag == true);
+                chefeoficina chefe = new chefeoficina(dn, nome, dinheiro, provas[op - 1]);
+                chefeoficinas.Add(chefe);
+            }
+            else { Console.WriteLine("tem de existir provas para criar um chefe de oficina"); Console.ReadKey(); }
         }
 
     }

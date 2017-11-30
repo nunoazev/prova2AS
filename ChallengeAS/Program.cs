@@ -388,16 +388,21 @@ namespace ChallengeAS
                     Console.WriteLine("Insira a prova:");
                     foreach (prova p in provas)
                     {
+                        int provaAtribuida = 0;
                         foreach (chefeoficina ch in chefeoficinas)
                         {
-
-                            if (p.idnome.CompareTo(ch.p.idnome)!=0) {
-                                Console.WriteLine("{0} - {1}, {2}", count, p.idnome, p.descricao);
-                                count++;
-
+                            if (p.idnome.CompareTo(ch.p.idnome) == 0)
+                            {
+                                provaAtribuida = 1;
+                                break;
                             }
                         }
 
+                        if(provaAtribuida == 0)
+                        {
+                            Console.WriteLine("{0} - {1}, {2}", count, p.idnome, p.descricao);
+                            count++;
+                        }
                     }
                     //verificar
                     op = int.Parse(Console.ReadLine());

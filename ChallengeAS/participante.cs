@@ -11,7 +11,7 @@ namespace ChallengeAS
         public int id { get; private set; }
         public string nome { get; set; }
         public DateTime dataNasc { get; set; }
-        public entidade eap { get; set; }
+        public entidade eap { get; set; } // entidadade a que percence
 
         public participante(int Id, string Nome, DateTime DataNasc, entidade Eap)
         {

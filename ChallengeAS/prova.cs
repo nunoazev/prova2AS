@@ -73,7 +73,7 @@ namespace ChallengeAS
                     
                 }
 
-                desc += String.Format("{0} | {1} | {2}", p1.Key.eap.distrito, (somaNotas/numPartic), numPartic);
+                desc += String.Format("{0} | {1} | {2}\n", p1.Key.eap.distrito, (somaNotas/numPartic), numPartic);
             }
            
             return desc;

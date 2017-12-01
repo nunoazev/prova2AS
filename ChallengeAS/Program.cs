@@ -30,6 +30,7 @@ namespace ChallengeAS
                 Console.WriteLine("5 - Adicionar Chefe De oficina");
                 Console.WriteLine("6 - Stats ChallengeAS - Provas");
                 Console.WriteLine("7 - Stats ChallengeAS - Participantes");
+                Console.WriteLine("8 - Stats ChallengeAS - ChefesOficina");
 
                 Console.WriteLine("0 - Sair");
 
@@ -57,6 +58,9 @@ namespace ChallengeAS
                         break;
                     case 7:
                         getstatspart(provas);
+                        break;
+                    case 8:
+                        getstatscho(provas,chefeoficinas);
                         break;
                 }
 
@@ -444,7 +448,7 @@ namespace ChallengeAS
             else { Console.WriteLine("tem de existir provas para criar um chefe de oficina"); Console.ReadKey(); }
         }
 
-        // a resolver
+        // completo sem ordenacao
         static void getstats(List<prova> provas)
         {
             Console.WriteLine("############### Stats ChallengeAS - Provas ###############");
@@ -461,7 +465,7 @@ namespace ChallengeAS
             Console.ReadKey();
         }
 
-        // a fazer
+        // completo
         static void getstatspart(List<prova> provas)
         {
             float nota = 20;
@@ -482,6 +486,12 @@ namespace ChallengeAS
             }
             Console.WriteLine(gajo+" | "+prova+" | "+nota );
             Console.ReadKey();
+        }
+
+        static void getstatscho(List<prova> provas, List<chefeoficina> chefeoficinas)
+        {
+
+
         }
 
     }

@@ -19,7 +19,7 @@ namespace ChallengeAS
 
             //menu
 
-            int opmenu = 5;
+            int opmenu;
             do
             {
                 Console.Clear();
@@ -500,6 +500,7 @@ namespace ChallengeAS
             Console.ReadKey();
         }
 
+        //completo mas sem o print correto
         static void getstatscho(List<prova> provas, List<chefeoficina> chefeoficinas)
         {
             Console.WriteLine("############### Stats ChallengeAS - ChefesOficina ############### TOP3 FINANCEIRO (LOWBUDGET)");
@@ -529,6 +530,8 @@ namespace ChallengeAS
             Console.ReadKey();
         }
 
+
+        //completo
         static void getStatsFin(List<chefeoficina> chefesOficinas, List<prova> provas)
         {
             Console.WriteLine("############### Stats ChallengeAZ - Finanças ###############");

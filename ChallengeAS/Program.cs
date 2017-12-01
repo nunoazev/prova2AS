@@ -155,7 +155,8 @@ namespace ChallengeAS
                 {
                     Console.WriteLine("Id da prova? (Ex: PROG_JAVA_3)");
                     idprova = Console.ReadLine();
-
+                    
+                    provaNaoExiste = false;
                     foreach (prova t in provas)
                     {
                         if (t.idnome.CompareTo(idprova) == 0)

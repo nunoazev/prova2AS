@@ -28,7 +28,9 @@ namespace ChallengeAS
                 Console.WriteLine("3 - Adicionar nova prova");
                 Console.WriteLine("4 - Gestao de erros");
                 Console.WriteLine("5 - Adicionar Chefe De oficina");
-                Console.WriteLine("6 - Stats ChallengeAS");
+                Console.WriteLine("6 - Stats ChallengeAS - Provas");
+                Console.WriteLine("7 - Stats ChallengeAS - Participantes");
+                Console.WriteLine("8 - Stats ChallengeAS - ChefesOficina");
 
                 Console.WriteLine("0 - Sair");
 
@@ -53,6 +55,12 @@ namespace ChallengeAS
                         break;
                     case 6:
                         getstats(provas);
+                        break;
+                    case 7:
+                        getstatspart(provas);
+                        break;
+                    case 8:
+                        getstatscho(provas,chefeoficinas);
                         break;
                 }
 
@@ -440,6 +448,7 @@ namespace ChallengeAS
             else { Console.WriteLine("tem de existir provas para criar um chefe de oficina"); Console.ReadKey(); }
         }
 
+        // completo sem ordenacao
         static void getstats(List<prova> provas)
         {
             int menorNumeroParticipantes = 9999;
@@ -461,6 +470,35 @@ namespace ChallengeAS
             Console.WriteLine(nomeProva + " | " + menorNumeroParticipantes);            
 
             Console.ReadKey();
+        }
+
+        // completo
+        static void getstatspart(List<prova> provas)
+        {
+            float nota = 20;
+            string gajo = "";
+            string prova = "";
+            Console.WriteLine("############### Stats ChallengeAS - Participantes ############### PIOR NOTA:");
+            foreach (prova p in provas) {
+               foreach(KeyValuePair<participante,float> part in p.listap) {
+
+                    if (part.Value < nota)
+                    {
+                        nota = part.Value;
+                        gajo = part.Key.nome;
+                        prova = p.idnome;
+                    }
+                        
+                }
+            }
+            Console.WriteLine(gajo+" | "+prova+" | "+nota );
+            Console.ReadKey();
+        }
+
+        static void getstatscho(List<prova> provas, List<chefeoficina> chefeoficinas)
+        {
+
+
         }
 
     }

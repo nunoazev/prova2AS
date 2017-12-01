@@ -442,16 +442,23 @@ namespace ChallengeAS
 
         static void getstats(List<prova> provas)
         {
+            int menorNumeroParticipantes = 9999;
+            string nomeProva = "";
+
             Console.WriteLine("############### Stats ChallengeAS - Provas ###############");
             foreach (prova p in provas) {
 
                 Console.WriteLine(p.getStats() + "\n");
 
+                if (p.listap.Count < menorNumeroParticipantes)
+                {
+                    menorNumeroParticipantes = p.listap.Count;
+                    nomeProva = p.idnome;
+                }
             }
 
-
             Console.WriteLine("MENOR NÚMERO DE PARTICIPANTES:");
-
+            Console.WriteLine(nomeProva + " | " + menorNumeroParticipantes);            
 
             Console.ReadKey();
         }

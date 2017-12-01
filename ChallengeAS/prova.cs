@@ -55,6 +55,7 @@ namespace ChallengeAS
         {
             int numPartic = 0;
             float somaNotas = 0;
+            List<string> distritos = new List<string>();
 
             string desc = "NOME DA PROVA: "+ this.descricao + "  | VENCEDOR: "+ getVencedor().nome + " \nANALISE POR DISTRITOS:\n";
 
@@ -66,14 +67,17 @@ namespace ChallengeAS
                 {
                     if(p1.Key.eap.distrito.CompareTo(p2.Key.eap.distrito)==0)
                     {
-                            numPartic++;
-                            somaNotas += p1.Value;
-                        
+                        numPartic++;
+                        somaNotas += p1.Value;
                     }
                     
                 }
+                if (!distritos.Contains(p1.Key.eap.distrito))
+                {
+                    distritos.Add(p1.Key.eap.distrito);
 
-                desc += String.Format("{0} | {1} | {2}\n", p1.Key.eap.distrito, (somaNotas/numPartic), numPartic);
+                    desc += String.Format("{0} | {1} | {2}\n", p1.Key.eap.distrito, (somaNotas / numPartic), numPartic);
+                }
             }
            
             return desc;

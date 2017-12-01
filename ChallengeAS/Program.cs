@@ -31,6 +31,7 @@ namespace ChallengeAS
                 Console.WriteLine("6 - Stats ChallengeAS - Provas");
                 Console.WriteLine("7 - Stats ChallengeAS - Participantes");
                 Console.WriteLine("8 - Stats ChallengeAS - ChefesOficina");
+                Console.WriteLine("9 - Stats  ChallengeAS - Finanças");
 
                 Console.WriteLine("0 - Sair");
 
@@ -61,6 +62,9 @@ namespace ChallengeAS
                         break;
                     case 8:
                         getstatscho(provas,chefeoficinas);
+                        break;
+                    case 9:
+                        getStatsFin(chefeoficinas, provas);
                         break;
                 }
 
@@ -451,7 +455,7 @@ namespace ChallengeAS
         // completo sem ordenacao
         static void getstats(List<prova> provas)
         {
-            int menorNumeroParticipantes = 9999;
+            int menorNumeroParticipantes = Int32.MaxValue;
             string nomeProva = "";
 
             Console.WriteLine("############### Stats ChallengeAS - Provas ###############");
@@ -501,6 +505,52 @@ namespace ChallengeAS
 
         }
 
+        static void getStatsFin(List<chefeoficina> chefesOficinas, List<prova> provas)
+        {
+            Console.WriteLine("############### Stats ChallengeAZ - Finanças ###############");
+
+            double totalRet = 0;
+
+            foreach (chefeoficina co in chefesOficinas)
+            {
+                totalRet += co.calculaRetencao();    
+            }
+
+            Console.WriteLine("RETENÇÃO DE CHEFES DE OFICINAS: {0} EUR", totalRet);
+
+            List<int> listaEuros = new List<int>();
+
+            foreach (prova p in provas)
+            {
+                int euros;
+
+                if (p.listap.Count <= 2)
+                    euros = 0;
+                else if (p.listap.Count <= 5)
+                    euros = 100;
+                else if (p.listap.Count <= 10)
+                    euros = 250;
+                else
+                    euros = 500;
+
+                listaEuros.Add(euros);
+
+                Console.WriteLine("VENCEDOR DA PROVA {0} : {1} EUR", p.getVencedor().nome, euros);
+            }
+
+            Console.Write("TOTAL A PAGAR AO ESTADO PORTUGUÊS RELATIVO A IMPOSTOS: " + totalRet);
+            double totalEuros = totalRet;
+
+            foreach(int euros in listaEuros)
+            {
+                totalEuros += euros;
+                Console.Write(" + " + euros);
+            }
+
+            Console.WriteLine(" = " + totalEuros + " EUR");
+
+            Console.ReadKey();
+        }
     }
 
 }

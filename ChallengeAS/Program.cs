@@ -497,8 +497,31 @@ namespace ChallengeAS
 
         static void getstatscho(List<prova> provas, List<chefeoficina> chefeoficinas)
         {
+            Console.WriteLine("############### Stats ChallengeAS - ChefesOficina ############### TOP3 FINANCEIRO (LOWBUDGET)");
+            Console.WriteLine("LUGAR  |      PROVA         |         CUSTO      |         PICTOGRAMA");
 
-
+           
+            string prova = "";
+            int count = 0;
+            chefeoficina temp = null;
+            List<chefeoficina> copia = chefeoficinas.ToList();
+            do
+            {
+                double dinheiro = Int64.MaxValue;
+                foreach (chefeoficina ch in copia)
+                {
+                    if (ch.dinheiro < dinheiro)
+                    {
+                        dinheiro = ch.dinheiro;
+                        prova = ch.p.idnome;
+                        temp = ch;
+                    }
+                }
+                Console.WriteLine("prova: "+prova+" dinheiro: "+dinheiro);
+                copia.Remove(temp);
+                count++;
+            } while (count < 3);
+            Console.ReadKey();
         }
 
     }

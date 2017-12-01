@@ -28,6 +28,7 @@ namespace ChallengeAS
                 Console.WriteLine("3 - Adicionar nova prova");
                 Console.WriteLine("4 - Gestao de erros");
                 Console.WriteLine("5 - Adicionar Chefe De oficina");
+                Console.WriteLine("6 - Stats ChallengeAS");
 
                 Console.WriteLine("0 - Sair");
 
@@ -49,6 +50,9 @@ namespace ChallengeAS
                         break;
                     case 5:
                         addchefeoficina(chefeoficinas,provas);
+                        break;
+                    case 6:
+                        getstats(provas);
                         break;
                 }
 
@@ -322,7 +326,6 @@ namespace ChallengeAS
             } while (opmenu != 0);
         }
 
-
         //completo
         static void removeparticipante(List<participante> participantes)
         {
@@ -346,8 +349,7 @@ namespace ChallengeAS
 
         }
 
-
-        //completo
+         //completo
         static void removeentidade(List<entidade> entidades)
         {
             if (entidades.Count() != 0)
@@ -365,8 +367,7 @@ namespace ChallengeAS
             else Console.WriteLine("Nao existem entidades");
         }
 
-
-        //?
+        //problema com index mas worka 90%
         static void addchefeoficina(List<chefeoficina> chefeoficinas, List<prova> provas)
         {
             int pAc = 0;
@@ -437,6 +438,22 @@ namespace ChallengeAS
                 } while (flag == true);
             }
             else { Console.WriteLine("tem de existir provas para criar um chefe de oficina"); Console.ReadKey(); }
+        }
+
+        static void getstats(List<prova> provas)
+        {
+            Console.WriteLine("############### Stats ChallengeAS - Provas ###############");
+            foreach (prova p in provas) {
+
+                Console.WriteLine(p.getStats() + "\n");
+
+            }
+
+
+            Console.WriteLine("MENOR NÚMERO DE PARTICIPANTES:");
+
+
+            Console.ReadKey();
         }
 
     }
